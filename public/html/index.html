@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Barra Superior com Menu de Navegação -->
+  <header>
+    <nav>
+      <a href="/">🏠 Início</a>
+      <a id="link-questionario" href="/questionario">📝 Auto-Avaliação</a>
+      <a id="metas-anuais" href="/metasAnuais">📝 Metas</a>
+    </nav>
+  </header>
+
+  <!-- Título da Página -->
+  <main>
+    <h1>Feedback BMPTEC</h1>
+    <h2>Arquivos Gerados</h2>
+    <!-- Menu opções arquivos-->
+    <div>
+      <a href="/compactar" id="baixar-zip" class="btn-menu">
+        <i class="fa fa-file"></i> Baixar arquivos compactados
+      </a>
+      <button id="excluir-arquivos" class="btn-menu">Excluir Todos os Arquivos</button>
+    </div>
+    <!-- Inicio grid-->
+    <table>
+      <thead>
+        <tr>
+          <th>Nome Arquivo</th>
+          <th>Squad</th>
+          <th>Data Arquivo</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody id="arquivos-tabela">
+        <!-- Os dados dos arquivos serão inseridos aqui -->
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Script para carregar os dados -->
+  <script>
+    // Função para carregar os arquivos gerados hoje e exibi-los na tabela
+    function carregarArquivos() {
+      fetch('/api/arquivos') // Supondo que sua API esteja em /api/arquivos
+        .then(response => response.json())
+        .then(arquivos => {
+          const tabela = document.getElementById('arquivos-tabela');
+          tabela.innerHTML = ''; // Limpa a tabela
+
+          arquivos.forEach(arquivo => {
+            const tr = document.createElement('tr');
+            
+            const tdNome = document.createElement('td');
+            tdNome.textContent = arquivo.nome;
+            
+            const tdSquad = document.createElement('td');
+            tdSquad.textContent = arquivo.squad;
+            
+            const tdDataHora = document.createElement('td');
+            tdDataHora.textContent = arquivo.dataHora; // Exibe a data e hora
+
+            const tdAcao = document.createElement('td');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = arquivo.downloadUrl; // Link de download
+            downloadLink.setAttribute('download', arquivo.nome); // Sugestão de nome para o arquivo
+            
+            // Adiciona o ícone de download (seta para baixo)
+            const downloadIcon = document.createElement('i');
+            downloadIcon.classList.add('fas', 'fa-download'); // Ícone do FontAwesome
+            downloadLink.appendChild(downloadIcon);
+
+            tdAcao.appendChild(downloadLink);
+
+            tr.appendChild(tdNome);
+            tr.appendChild(tdSquad);
+            tr.appendChild(tdDataHora);
+            tr.appendChild(tdAcao);
+
+            tabela.appendChild(tr);
+          });
+        })
+        .catch(error => console.error('Erro ao carregar arquivos:', error));
+    }
+    
+    // Função para chamar o endpoint de exclusão de arquivos
+    document.getElementById('excluir-arquivos').addEventListener('click', () => {
+      if (confirm("Tem certeza que deseja excluir todos os arquivos?")) {
+        fetch('/excluirArquivos', {  
+          method: 'DELETE',  // Método DELETE
+        })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message); // Exibe a mensagem de sucesso ou erro
+        })
+        .catch(error => {
+          console.error('Erro ao excluir arquivos:', error);
+          alert('Ocorreu um erro ao tentar excluir os arquivos.');
+        });
+      }
+    });
+
+
+
+    // Carregar os arquivos quando a página for carregada
+    window.onload = carregarArquivos;
+
+  </script>
+
+
+</body>
+</html>

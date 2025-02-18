@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário de Autopercepção</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/questionario.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">🏠 Início</a>
+      <a id="link-questionario" href="/questionario">📝 Auto-Avaliação</a>
+      <a id="metas-anuais" href="/metasAnuais">📝 Metas</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Questionário de Auto-Avaliação</h1>
+
+    <form action="/submit" method="POST" id="questionario-form">
+      
+      <!-- Etapa 0: Dados do Participante -->
+      <div class="form-step active" id="step-0">
+        <h2>Informe os dados do colaborador:</h2>
+        
+        <label for="nome">Nome do Participante:</label>
+        <input type="text" id="nome" name="nome" required ><br><br>
+
+        <!-- Squad -->
+        <label for="squad">Squad:</label>
+        <select id="squad" name="squad" class="select-field">
+          <option value="" disabled selected style="color: #999;">Selecione:</option>
+          <option value="Backoffice">Backoffice</option>
+          <option value="BMP Digital (Cessão)">BMP Digital (Cessão)</option>
+          <option value="BMP Digital (Crédito)">BMP Digital (Crédito)</option>
+          <option value="BMP Digital (Financeiro)">BMP Digital (Financeiro)</option>
+          <option value="Bureaus">Bureaus</option>
+          <option value="Consignado">Consignado</option>
+          <option value="DBS">DBS</option>
+          <option value="Multiplo">Multiplo</option>
+          <option value="Safe">Safe</option>
+        </select> 
+
+        <!-- Data de Contratação -->
+        <label for="dataContratacao">Data Contratação:</label>
+        <input type="date" id="dataContratacao" name="dataContratacao" required class="date-field">
+        <br>
+        <br>
+        <!-- Função -->
+        <label for="funcao">Cargo:</label>
+        <select id="funcao" name="funcao" required class="select-field">
+          <option value="QA">QA</option>
+          <option value="DEV">DEV</option>
+        </select>
+
+        <!-- Senioridade -->
+        <select id="senioridade" name="senioridade" required class="select-field">
+          <option value="Júnior">Júnior</option>
+          <option value="Pleno">Pleno</option>
+          <option value="Sênior">Sênior</option>
+          <option value="Especialista">Especialista</option>
+        </select>
+
+        <!-- Nível -->
+        <select id="nivel" name="nivel" required class="select-field">
+          <option value="I">I</option>
+          <option value="II">II</option>
+          <option value="III">III</option>
+          <option value="IV">IV</option>
+          <option value="V">V</option>
+        </select>
+        <br><br>
+
+        
+      </div>
+
+      <!-- Etapa 1: Autoconhecimento -->
+      <div class="form-step" id="step-1">
+        <h2>1. Autoconhecimento e Identidade Profissional</h2>
+        
+        <label for="autoconhecimento_1">O que você acredita que o diferencia como profissional dentro da equipe?</label>
+        <textarea id="autoconhecimento_1" name="autoconhecimento_1" required></textarea>
+        
+        <label for="autoconhecimento_2">Quais aspectos do seu trabalho lhe trazem mais satisfação e motivação?</label>
+        <textarea id="autoconhecimento_2" name="autoconhecimento_2" required></textarea>
+        
+        <label for="autoconhecimento_3">Como você acha que seus colegas e gestores descreveriam sua atuação profissional?</label>
+        <textarea id="autoconhecimento_3" name="autoconhecimento_3" required></textarea>
+      </div>
+
+      <!-- Etapa 2: Habilidades e Conhecimento Técnico -->
+      <div class="form-step" id="step-2">
+        <h2>2. Habilidades e Conhecimento Técnico</h2>
+        
+        <label for="habilidades_1">Quais são as habilidades técnicas que você mais confia ao executar seu trabalho?</label>
+        <textarea id="habilidades_1" name="habilidades_1" required></textarea>
+        
+        <label for="habilidades_2">Existe alguma área técnica em que você sente que poderia melhorar? Se sim, como isso impacta seu desempenho?</label>
+        <textarea id="habilidades_2" name="habilidades_2" required></textarea>
+        
+        <label for="habilidades_3">Você sente que acompanha bem as mudanças e tendências tecnológicas do seu setor?</label>
+        <textarea id="habilidades_3" name="habilidades_3" required></textarea>
+      </div>
+
+      <!-- Etapa 3: Trabalho em Equipe -->
+      <div class="form-step" id="step-3">
+        <h2>3. Trabalho em Equipe e Colaboração</h2>
+        
+        <label for="colaboracao_1">Como você se percebe em relação à colaboração com seus colegas? Você sente que contribui ativamente para o time?</label>
+        <textarea id="colaboracao_1" name="colaboracao_1" required></textarea>
+        
+        <label for="colaboracao_2">Você acredita que sua presença impacta positivamente a dinâmica da equipe? Por quê?</label>
+        <textarea id="colaboracao_2" name="colaboracao_2" required></textarea>
+        
+        <label for="colaboracao_3">Como você lida com opiniões e abordagens diferentes das suas dentro da equipe?</label>
+        <textarea id="colaboracao_3" name="colaboracao_3" required></textarea>
+      </div>
+
+      <!-- Etapa 4: Comunicação -->
+      <div class="form-step" id="step-4">
+        <h2>4. Comunicação e Relacionamento</h2>
+        
+        <label for="comunicacao_1">Você sente que sua comunicação é clara e bem compreendida pelos outros?</label>
+        <textarea id="comunicacao_1" name="comunicacao_1" required></textarea>
+        
+        <label for="comunicacao_2">Como você reage quando recebe feedback construtivo? Você consegue absorvê-lo de forma positiva?</label>
+        <textarea id="comunicacao_2" name="comunicacao_2" required></textarea>
+        
+        <label for="comunicacao_3">Você acha que consegue expressar suas ideias e preocupações de maneira assertiva?</label>
+        <textarea id="comunicacao_3" name="comunicacao_3" required></textarea>
+      </div>
+
+    <!-- Etapa 5: Resolução de Problemas e tomada de decisão -->
+    <div class="form-step" id="step-5">
+        <h2>5. Motivação e Propósito</h2>
+
+        <label for="resolucao_1">Você se considera alguém que antecipa problemas ou que responde bem quando eles surgem? </label>
+        <textarea id="resolucao_1" name="resolucao_1" required></textarea>
+
+        <label for="resolucao_2">Como você se sente ao tomar decisões que impactam outras pessoas ou o projeto?</label>
+        <textarea id="resolucao_2" name="resolucao_2" required></textarea>
+
+        <label for="resolucao_3">Há algum momento recente em que você teve que resolver um problema desafiador? Como você lidou com isso?</label>
+        <textarea id="resolucao_3" name="resolucao_3" required></textarea>
+    </div>
+
+      <!-- Etapa 6: Motivação e proposito-->
+      <div class="form-step" id="step-6">
+        <h2>6. Motivação e Propósito</h2>
+        
+        <label for="motivacao_1">O que mais o motiva a continuar crescendo profissionalmente?</label>
+        <textarea id="motivacao_1" name="motivacao_1" required></textarea>
+        
+        <label for="motivacao_2">Há algo que você sente que perdeu ou deixou de lado em sua trajetória profissional? Como isso afeta sua visão sobre o futuro?</label>
+        <textarea id="motivacao_2" name="motivacao_2" required></textarea>
+        
+        <label for="motivacao_3">Se pudesse mudar algum aspecto do seu trabalho ou rotina profissional, o que seria e por quê?</label>
+        <textarea id="motivacao_3" name="motivacao_3" required></textarea>
+      </div>
+
+      <!-- Etapa 7: Reflexão Final -->
+      <div class="form-step" id="step-7">
+        <h2>7. Reflexão Final</h2>
+        
+        <label for="reflexao_1">Se você pudesse dar um conselho profissional para si mesmo há um ano, qual seria?</label>
+        <textarea id="reflexao_1" name="reflexao_1" required></textarea>
+        
+        <label for="reflexao_2">Como você gostaria de ser lembrado pelos colegas e gestores com quem trabalha atualmente?</label>
+        <textarea id="reflexao_2" name="reflexao_2" required></textarea>
+        
+        <label for="reflexao_3">Existe algo que gostaria de compartilhar sobre sua experiência profissional que não foi abordado nas perguntas anteriores?</label>
+        <textarea id="reflexao_3" name="reflexao_3" required></textarea>
+      </div>
+
+      <div class="form-step" id="step-8">
+        <h2>1. Avaliação Técnica</h2>
+
+        <!-- Back-end (C#) -->
+        <h3>Back-end (C#)</h3>
+        <label><input type="checkbox" name="back_end_1"> Sabe debugar o código com maestria? </label><br>
+        <label><input type="checkbox" name="back_end_2"> Aplica padrões de projeto corretamente? </label><br>
+        <label><input type="checkbox" name="back_end_3"> Domina o uso de LINQ e expressões lambda? </label><br>
+        <label><input type="checkbox" name="back_end_4"> Consegue criar e gerenciar APIs REST de forma eficiente? </label><br>
+        <label><input type="checkbox" name="back_end_5"> Usa corretamente Entity Framework/Core? </label><br>
+        <label><input type="checkbox" name="back_end_6"> Implementa testes unitários no back-end? </label><br>
+        <label><input type="checkbox" name="back_end_7"> Tem experiência com processamento assíncrono (async/await)? </label><br>
+        <label><input type="checkbox" name="back_end_8"> Domina conceitos de injeção de dependência? </label><br>
+        <label><input type="checkbox" name="back_end_9"> Configura e utiliza corretamente logging e monitoring? </label><br>
+        <label><input type="checkbox" name="back_end_10"> Compreende e implementa segurança em APIs? </label><br>
+
+        <!-- Front-end (Vue.js) -->
+        <h3>Front-end (Vue.js)</h3>
+        <label><input type="checkbox" name="front_end_vue_1"> Consegue criar componentes simples em Vue? </label><br>
+        <label><input type="checkbox" name="front_end_vue_2"> Sabe estilizar componentes usando CSS ou frameworks? </label><br>
+        <label><input type="checkbox" name="front_end_vue_3"> Compreende e usa diretivas básicas como v-if e v-for? </label><br>
+        <label><input type="checkbox" name="front_end_vue_4"> Consegue manipular eventos no Vue? </label><br>
+        <label><input type="checkbox" name="front_end_vue_5"> Usa corretamente v-model para inputs? </label><br>
+        <label><input type="checkbox" name="front_end_vue_6"> Faz requisições HTTP usando axios ou fetch? </label><br>
+        <label><input type="checkbox" name="front_end_vue_7"> Consegue organizar arquivos e pastas em um projeto Vue? </label><br>
+        <label><input type="checkbox" name="front_end_vue_8"> Entende a diferença entre props e data? </label><br>
+        <label><input type="checkbox" name="front_end_vue_9"> Usa componentes reutilizáveis no Vue? </label><br>
+        <label><input type="checkbox" name="front_end_vue_10"> Consegue consumir uma API e exibir dados na tela? </label><br>
+
+        <!-- Front-end (Angular 2+) -->
+        <h3>Front-end (Angular 2+)</h3>
+        <label><input type="checkbox" name="front_end_angular_1"> Consegue criar componentes básicos no Angular? </label><br>
+        <label><input type="checkbox" name="front_end_angular_2"> Sabe estilizar componentes usando CSS ou frameworks? </label><br>
+        <label><input type="checkbox" name="front_end_angular_3"> Consegue usar *ngIf e *ngFor corretamente? </label><br>
+        <label><input type="checkbox" name="front_end_angular_4"> Entende como funcionam os eventos e bindings no Angular? </label><br>
+        <label><input type="checkbox" name="front_end_angular_5"> Usa formulários básicos com ngModel? </label><br>
+        <label><input type="checkbox" name="front_end_angular_6"> Faz requisições HTTP usando HttpClient? </label><br>
+        <label><input type="checkbox" name="front_end_angular_7"> Organiza corretamente os arquivos em um projeto Angular? </label><br>
+        <label><input type="checkbox" name="front_end_angular_8"> Entende a diferença entre services e componentes? </label><br>
+        <label><input type="checkbox" name="front_end_angular_9"> Consegue criar uma rota básica no Angular? </label><br>
+        <label><input type="checkbox" name="front_end_angular_10"> Consegue consumir uma API e exibir dados na tela? </label><br>
+
+        <!-- Controle de Versionamento (GIT) -->
+        <h3>Controle de Versionamento (GIT)</h3>
+        <label><input type="checkbox" name="git_1"> Compreende o fluxo de trabalho Git Flow? </label><br>
+        <label><input type="checkbox" name="git_2"> Sabe resolver conflitos de merge? </label><br>
+        <label><input type="checkbox" name="git_3"> Usa corretamente branches e tags? </label><br>
+        <label><input type="checkbox" name="git_4"> Domina rebase e cherry-pick? </label><br>
+        <label><input type="checkbox" name="git_5"> Sabe configurar e usar hooks do Git? </label><br>
+
+        <!-- Estrutura de Projetos/Configuração de Ambiente -->
+        <h3>Estrutura de Projetos/Configuração de Ambiente</h3>
+        <label><input type="checkbox" name="estrutura_1"> Compreende o fluxo de funcionamento de uma aplicação web? </label><br>
+        <label><input type="checkbox" name="estrutura_2"> Entende os conceitos de regra de negócio e sua implementação? </label><br>
+        <label><input type="checkbox" name="estrutura_3"> Sabe configurar um ambiente local para desenvolvimento? </label><br>
+        <label><input type="checkbox" name="estrutura_4"> Consegue explicar a estrutura de um projeto e a função de cada parte? </label><br>
+        <label><input type="checkbox" name="estrutura_5"> Tem noção sobre como integrar diferentes partes de uma aplicação? </label><br>
+
+      </div>
+
+      <!-- Navegação -->
+      <div class="form-navigation">
+        <button type="button" id="prev" disabled>Voltar</button>
+        <button type="button" id="next">Próximo</button>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      
+    </form>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll('.form-step');
+    const nextButton = document.getElementById('next');
+    const prevButton = document.getElementById('prev');
+    const progress = document.getElementById('progress');
+    let currentStep = 0;
+  
+    // Função para mostrar o passo atual
+    function showStep(stepIndex) {
+      steps.forEach((step, index) => {
+        step.classList.remove('active');
+        if (index === stepIndex) {
+          step.classList.add('active');
+        }
+      });
+  
+      // Atualizar a barra de progresso
+      const progressWidth = ((stepIndex + 1) / steps.length) * 100;
+      progress.style.width = progressWidth + '%';
+  
+      // Habilitar ou desabilitar os botões de navegação
+      prevButton.disabled = stepIndex === 0;
+      nextButton.textContent = stepIndex === steps.length - 1 ? 'Finalizar' : 'Próximo';
+    }
+  
+    // Função para validar se a etapa 8 deve ser exibida
+    function shouldShowStep8() {
+      // Condição exemplo: se "Sim" foi selecionado em alguma pergunta específica da etapa anterior
+      const respostaEtapa7 = document.querySelector('input[name="habilidade_1"]:checked');
+      return respostaEtapa7 && respostaEtapa7.value === "Sim"; // Modifique conforme a lógica desejada
+    }
+  
+    // Lidar com o clique no botão 'Próximo'
+    nextButton.addEventListener('click', () => {
+      if (currentStep === 7 && shouldShowStep8()) {
+        currentStep++; // Avançar para a etapa 8 se a condição for atendida
+      } else if (currentStep < steps.length - 1) {
+        currentStep++;
+      } else {
+        document.getElementById('questionario-form').submit();
+      }
+  
+      showStep(currentStep);
+    });
+  
+    // Lidar com o clique no botão 'Voltar'
+    prevButton.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+  
+    // Inicializar o formulário
+    showStep(currentStep);
+  </script>
+  
+</body>
+</html>
