@@ -12,7 +12,7 @@ function gerarQuestionario(respostas) {
   const nivel = respostas.nivel;
   const cargo = funcao + " " + senioridade + " " + nivel;
   const squad = respostas.squad || "Squad não especificado"; // Usar o valor de squad para criar diretórios
-  const dataFeedback = format(new Date(), 'yyyy-MM-dd');
+  const dataFeedback = format(new Date(), 'dd-MM-yyyy');
   const dataImpressa = format(new Date(), 'dd/MM/yyyy HH:mm');
   const dataContratacao = format(respostas.dataContratacao, 'dd/MM/yyyy');
 
@@ -161,7 +161,7 @@ function gerarQuestionario(respostas) {
   });
 
   // Gerando o nome do arquivo no formato: NomeDoParticipante yyyy-mm-dd.docx
-  const fileName = `${nomeParticipante.replace(/\s/g, "_")} (Auto Avaliacao).docx`;
+  const fileName = `${nomeParticipante} - ${dataFeedback} - (Auto Avaliacao).docx`;
   const filePath = path.join(squadDir, fileName); // Salvar o arquivo dentro da pasta da squad
 
   // Retornando o buffer gerado pelo Packer

@@ -10,7 +10,7 @@ function successMessage() {
           </style>
         </head>
         <body>
-          <div class="message">Sucesso! Você será redirecionado em 3 segundos.</div>
+          <div class="message">Sucesso! Você será redirecionado.</div>
         </body>
       </html>
     `;
@@ -28,7 +28,7 @@ function successMessage() {
           </style>
         </head>
         <body>
-          <div class="message">Erro. Você será redirecionado em 3 segundos.</div>
+          <div class="message">Erro. Você será redirecionado.</div>
         </body>
       </html>
     `;
