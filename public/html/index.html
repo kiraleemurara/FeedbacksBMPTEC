@@ -23,46 +23,44 @@
   </header>
 
   <!-- Título da Página -->
-  <main>
-    <h1>Feedback BMPTEC</h1>
-    <h2>Arquivos Gerados</h2>
+  <div class="index-container">
+    <main>
+      <h1>Feedback BMPTEC</h1>
 
-    <!-- Menu de opções -->
-    <div>
-      <a href="/compactar" id="baixar-zip" class="btn-menu">
-        <i class="fa fa-file-archive"></i> Baixar arquivos compactados
-      </a>
-      <button id="excluir-arquivos" class="btn-menu">
-        <i class="fas fa-trash"></i> Excluir Todos os Arquivos
-      </button>
-    </div>
+      <!-- Menu de opções -->
+      <div>
+        <a href="/compactar" id="baixar-zip" class="btn-menu">
+          <i class="fa fa-file-archive"></i> Baixar arquivos compactados
+        </a>
+        <button id="excluir-arquivos" class="btn-menu">
+          <i class="fas fa-trash"></i> Excluir Todos os Arquivos
+        </button>
+      </div>
 
-    <!-- Checkbox para ativar/desativar atualização automática -->
-    <div class="config-atualizacao">
-      <input type="checkbox" id="toggle-atualizacao" checked>
-      <label for="toggle-atualizacao">Ativar atualização automática</label>
-    </div>
+      <!-- Checkbox para ativar/desativar atualização automática -->
+      <div class="config-atualizacao">
+        <input type="checkbox" id="toggle-atualizacao" checked>
+        <label for="toggle-atualizacao">Ativar atualização automática</label>
+      </div>
 
-    <!-- Grid de arquivos -->
-    <table>
-      <thead>
-        <tr>
-          <th>Nome do Arquivo</th>
-          <th>Squad</th>
-          <th>Data do Arquivo</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody id="arquivos-tabela">
-        <!-- Os arquivos serão inseridos aqui -->
-      </tbody>
-    </table>
-  </main>
+      <p id="mensagem-atualizacao">🔄 Atualizando a página em <span id="contador">30</span> segundos...</p>
+      <!-- Grid de arquivos -->
+      <table>
+        <thead>
+          <tr>
+            <th>Nome do Arquivo</th>
+            <th>Squad</th>
+            <th>Data do Arquivo</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="arquivos-tabela">
+          <!-- Os arquivos serão inseridos aqui -->
+        </tbody>
+      </table>
+    </main>
+  </div>
 
-  <!-- Rodapé com mensagem de atualização -->
-  <footer>
-    <p id="mensagem-atualizacao">🔄 Atualizando a página em <span id="contador">30</span> segundos...</p>
-  </footer>
 
   <!-- Script para carregar os dados -->
   <script>

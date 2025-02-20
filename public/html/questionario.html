@@ -12,7 +12,7 @@
     <nav>
       <a href="/">🏠 Início</a>
       <a id="link-questionario" href="/questionario">📝 Auto-Avaliação</a>
-      <a id="metas-anuais" href="/metasAnuais">📝 Metas</a>
+      <a id="metas-anuais" href="/metasAnuais">📌 Metas</a>
     </nav>
   </header>
   <div class="container">
@@ -25,11 +25,11 @@
         <h2>Informe os dados do colaborador:</h2>
         
         <label for="nome">Nome do Participante:</label>
-        <input type="text" id="nome" name="nome" required ><br><br>
-
+        <input type="text" id="nome" name="nome" class="input-large" required > 
+        <br><br>
         <!-- Squad -->
         <label for="squad">Squad:</label>
-        <select id="squad" name="squad" class="select-field">
+        <select id="squad" name="squad" class="select-field" >
           <option value="" disabled selected style="color: #999;">Selecione:</option>
           <option value="Backoffice">Backoffice</option>
           <option value="BMP Digital (Cessão)">BMP Digital (Cessão)</option>
@@ -79,7 +79,7 @@
       <div class="form-step" id="step-1">
         <h2>1. Autoconhecimento e Identidade Profissional</h2>
         
-        <label for="autoconhecimento_1">O que você acredita que o diferencia como profissional dentro da equipe?</label>
+        <label for="autoconhecimento_1" class="label-textarea">O que você acredita que o diferencia como profissional dentro da equipe?</label>
         <textarea id="autoconhecimento_1" name="autoconhecimento_1" required></textarea>
         
         <label for="autoconhecimento_2">Quais aspectos do seu trabalho lhe trazem mais satisfação e motivação?</label>
