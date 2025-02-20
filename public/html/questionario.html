@@ -16,7 +16,7 @@
     </nav>
   </header>
   <div class="container">
-    <h1>Questionário de Auto-Avaliação</h1>
+    <h1 class="titulo-etapa">Questionário de Feedback</h1>
 
     <form action="/submit" method="POST" id="questionario-form">
       
@@ -171,6 +171,67 @@
         
         <label for="reflexao_3">Existe algo que gostaria de compartilhar sobre sua experiência profissional que não foi abordado nas perguntas anteriores?</label>
         <textarea id="reflexao_3" name="reflexao_3" required></textarea>
+      </div>
+
+
+       <!-- Etapa 8: Feedback Tech lead-->
+       <div class="form-step" id="step-8">
+        <h2>8. Feedback 360° - <b>Tech lead</b> </h2>
+        
+        <label for="leader_1">
+          Do seu ponto de vista, como você descreveria o desempenho geral dessa pessoa? Quais os pontos fortes dessa pessoa? E quais os pontos de atenção?
+        </label>
+        <textarea id="leader_1" name="leader_1" required></textarea>
+        
+        <label for="leader_2"> 
+         Quais habilidades foram aprimoradas desde a última avaliação, ou quais você vê potencial?
+        </label>
+        <textarea id="leader_2" name="leader_2" required></textarea>
+        
+        <label for="leader_3">
+          Quais conselho ou dica você daria para ajudar esse colaborador a melhorar seus resultados e seu impacto dentro da equipe?
+        </label>
+        <textarea id="leader_3" name="leader_3" required></textarea>
+      </div>
+
+      <!-- Etapa 9: Feedback Gestão-->
+      <div class="form-step" id="step-9">
+        <h2>9. Feedback 360° - <b>Gestão</b> </h2>
+        
+        <label for="gestao_1">
+          Quais são os comportamentos desse colaborador que você acha que mais contribuem para a dinâmica da equipe?
+        </label>
+        <textarea id="gestao_1" name="gestao_1" required></textarea>
+        
+        <label for="gestao_2"> 
+          Quais são as suas expectativas em relação ao desempenho desse colaborador? Elas tem sido atendidas? Algum comportamento que necessita atenção?
+        </label>
+        <textarea id="gestao_2" name="gestao_2" required></textarea>
+        
+        <label for="gestao_3">
+          Alguma das questões levantadas pelo colaborador nas perguntas anteriores que você gostaria de responder, ou explicar?
+        </label>
+        <textarea id="gestao_3" name="gestao_3" required></textarea>
+      </div>
+    
+      <!-- Etapa 10: Feedback Colaborador-->
+      <div class="form-step" id="step-10">
+        <h2>10. Feedback 360° - <b> Colaborador</b> </h2>
+        
+        <label for="colaborador_1">
+          O que foi apresentado pelos responsáveis pela sua liderança e gestão, faz sentido? Alguma dúvida ou esclarecimento necessário?
+        </label>
+        <textarea id="colaborador_1" name="colaborador_1" required></textarea>
+        
+        <label for="colaborador_2"> 
+          Descreva sua liderança. Ela tem sido colaborativa com sua carreira? Tem recebido o suporte necessário? Ela consegue atender suas expectativas? Alguma sugestão?
+        </label>
+        <textarea id="colaborador_2" name="colaborador_2" required></textarea>
+        
+        <label for="colaborador_3">
+          Descreva sua Gestão. Ela tem sido assertiva? Você tem se sentido ouvido e respeitado? Alguma sugestão?
+        </label>
+        <textarea id="colaborador_3" name="colaborador_3" required></textarea>
       </div>
 
 
