@@ -6,15 +6,19 @@
   <title>Página Inicial</title>
   <link rel="stylesheet" href="../css/styles.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Estilos adicionais */
+    
+  </style>
 </head>
 <body>
 
-  <!-- Barra Superior com Menu de Navegação -->
+  <!-- Barra Superior -->
   <header>
     <nav>
       <a href="/">🏠 Início</a>
       <a id="link-questionario" href="/questionario">📝 Auto-Avaliação</a>
-      <a id="metas-anuais" href="/metasAnuais">📝 Metas</a>
+      <a id="metas-anuais" href="/metasAnuais">📌 Metas</a>
     </nav>
   </header>
 
@@ -22,34 +26,51 @@
   <main>
     <h1>Feedback BMPTEC</h1>
     <h2>Arquivos Gerados</h2>
-    <!-- Menu opções arquivos-->
+
+    <!-- Menu de opções -->
     <div>
       <a href="/compactar" id="baixar-zip" class="btn-menu">
-        <i class="fa fa-file"></i> Baixar arquivos compactados
+        <i class="fa fa-file-archive"></i> Baixar arquivos compactados
       </a>
-      <button id="excluir-arquivos" class="btn-menu">Excluir Todos os Arquivos</button>
+      <button id="excluir-arquivos" class="btn-menu">
+        <i class="fas fa-trash"></i> Excluir Todos os Arquivos
+      </button>
     </div>
-    <!-- Inicio grid-->
+
+    <!-- Checkbox para ativar/desativar atualização automática -->
+    <div class="config-atualizacao">
+      <input type="checkbox" id="toggle-atualizacao" checked>
+      <label for="toggle-atualizacao">Ativar atualização automática</label>
+    </div>
+
+    <!-- Grid de arquivos -->
     <table>
       <thead>
         <tr>
-          <th>Nome Arquivo</th>
+          <th>Nome do Arquivo</th>
           <th>Squad</th>
-          <th>Data Arquivo</th>
+          <th>Data do Arquivo</th>
           <th>Ação</th>
         </tr>
       </thead>
       <tbody id="arquivos-tabela">
-        <!-- Os dados dos arquivos serão inseridos aqui -->
+        <!-- Os arquivos serão inseridos aqui -->
       </tbody>
     </table>
   </main>
 
+  <!-- Rodapé com mensagem de atualização -->
+  <footer>
+    <p id="mensagem-atualizacao">🔄 Atualizando a página em <span id="contador">30</span> segundos...</p>
+  </footer>
+
   <!-- Script para carregar os dados -->
   <script>
-    // Função para carregar os arquivos gerados hoje e exibi-los na tabela
+    let intervaloAtualizacao;
+
+    // Função para carregar os arquivos na tabela
     function carregarArquivos() {
-      fetch('/api/arquivos') // Supondo que sua API esteja em /api/arquivos
+      fetch('/api/arquivos?nocache=' + new Date().getTime()) // Evita cache
         .then(response => response.json())
         .then(arquivos => {
           const tabela = document.getElementById('arquivos-tabela');
@@ -57,63 +78,88 @@
 
           arquivos.forEach(arquivo => {
             const tr = document.createElement('tr');
-            
+
             const tdNome = document.createElement('td');
             tdNome.textContent = arquivo.nome;
-            
+
             const tdSquad = document.createElement('td');
             tdSquad.textContent = arquivo.squad;
-            
+
             const tdDataHora = document.createElement('td');
-            tdDataHora.textContent = arquivo.dataHora; // Exibe a data e hora
+            tdDataHora.textContent = arquivo.dataHora; 
 
             const tdAcao = document.createElement('td');
             const downloadLink = document.createElement('a');
-            downloadLink.href = arquivo.downloadUrl; // Link de download
-            downloadLink.setAttribute('download', arquivo.nome); // Sugestão de nome para o arquivo
-            
-            // Adiciona o ícone de download (seta para baixo)
+            downloadLink.href = arquivo.downloadUrl;
+            downloadLink.setAttribute('download', arquivo.nome);
+
+            // Ícone de download
             const downloadIcon = document.createElement('i');
-            downloadIcon.classList.add('fas', 'fa-download'); // Ícone do FontAwesome
+            downloadIcon.classList.add('fas', 'fa-download');
             downloadLink.appendChild(downloadIcon);
 
             tdAcao.appendChild(downloadLink);
-
             tr.appendChild(tdNome);
             tr.appendChild(tdSquad);
             tr.appendChild(tdDataHora);
             tr.appendChild(tdAcao);
-
             tabela.appendChild(tr);
           });
         })
         .catch(error => console.error('Erro ao carregar arquivos:', error));
     }
-    
-    // Função para chamar o endpoint de exclusão de arquivos
+
+    // Função para excluir arquivos
     document.getElementById('excluir-arquivos').addEventListener('click', () => {
-      if (confirm("Tem certeza que deseja excluir todos os arquivos?")) {
-        fetch('/excluirArquivos', {  
-          method: 'DELETE',  // Método DELETE
-        })
-        .then(response => response.json())
-        .then(data => {
-          alert(data.message); // Exibe a mensagem de sucesso ou erro
-        })
-        .catch(error => {
-          console.error('Erro ao excluir arquivos:', error);
-          alert('Ocorreu um erro ao tentar excluir os arquivos.');
-        });
+      if (confirm('Tem certeza que deseja excluir todos os arquivos? Esta ação não pode ser desfeita.')) {
+        fetch('/excluirArquivos', { method: 'DELETE' })
+          .then(response => response.json())
+          .then(data => {
+            alert(data.message);
+            if (data.success) {
+              setTimeout(() => {
+                location.reload(true);
+              }, 500);
+            }
+          })
+          .catch(error => console.error('Erro ao excluir arquivos:', error));
       }
     });
 
+    // Função para ativar/desativar a atualização automática
+    function configurarAtualizacaoAutomatica() {
+      const checkbox = document.getElementById('toggle-atualizacao');
+      const mensagem = document.getElementById('mensagem-atualizacao');
+      const contador = document.getElementById('contador');
 
+      if (checkbox.checked) {
+        let tempoRestante = 30;
+        mensagem.style.display = 'block'; 
 
-    // Carregar os arquivos quando a página for carregada
-    window.onload = carregarArquivos;
+        intervaloAtualizacao = setInterval(() => {
+          tempoRestante--;
+          contador.textContent = tempoRestante;
 
+          if (tempoRestante <= 0) {
+            clearInterval(intervaloAtualizacao);
+            location.reload(true); 
+          }
+        }, 1000);
+      } else {
+        clearInterval(intervaloAtualizacao);
+        mensagem.style.display = 'none'; 
+      }
+    }
+
+    // Listener para ativação/desativação da atualização
+    document.getElementById('toggle-atualizacao').addEventListener('change', configurarAtualizacaoAutomatica);
+
+    // Inicia carregamento e atualização automática ao carregar a página
+    window.onload = () => {
+      carregarArquivos();
+      configurarAtualizacaoAutomatica();
+    };
   </script>
-
 
 </body>
 </html>

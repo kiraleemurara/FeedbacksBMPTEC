@@ -173,65 +173,6 @@
         <textarea id="reflexao_3" name="reflexao_3" required></textarea>
       </div>
 
-      <div class="form-step" id="step-8">
-        <h2>1. Avaliação Técnica</h2>
-
-        <!-- Back-end (C#) -->
-        <h3>Back-end (C#)</h3>
-        <label><input type="checkbox" name="back_end_1"> Sabe debugar o código com maestria? </label><br>
-        <label><input type="checkbox" name="back_end_2"> Aplica padrões de projeto corretamente? </label><br>
-        <label><input type="checkbox" name="back_end_3"> Domina o uso de LINQ e expressões lambda? </label><br>
-        <label><input type="checkbox" name="back_end_4"> Consegue criar e gerenciar APIs REST de forma eficiente? </label><br>
-        <label><input type="checkbox" name="back_end_5"> Usa corretamente Entity Framework/Core? </label><br>
-        <label><input type="checkbox" name="back_end_6"> Implementa testes unitários no back-end? </label><br>
-        <label><input type="checkbox" name="back_end_7"> Tem experiência com processamento assíncrono (async/await)? </label><br>
-        <label><input type="checkbox" name="back_end_8"> Domina conceitos de injeção de dependência? </label><br>
-        <label><input type="checkbox" name="back_end_9"> Configura e utiliza corretamente logging e monitoring? </label><br>
-        <label><input type="checkbox" name="back_end_10"> Compreende e implementa segurança em APIs? </label><br>
-
-        <!-- Front-end (Vue.js) -->
-        <h3>Front-end (Vue.js)</h3>
-        <label><input type="checkbox" name="front_end_vue_1"> Consegue criar componentes simples em Vue? </label><br>
-        <label><input type="checkbox" name="front_end_vue_2"> Sabe estilizar componentes usando CSS ou frameworks? </label><br>
-        <label><input type="checkbox" name="front_end_vue_3"> Compreende e usa diretivas básicas como v-if e v-for? </label><br>
-        <label><input type="checkbox" name="front_end_vue_4"> Consegue manipular eventos no Vue? </label><br>
-        <label><input type="checkbox" name="front_end_vue_5"> Usa corretamente v-model para inputs? </label><br>
-        <label><input type="checkbox" name="front_end_vue_6"> Faz requisições HTTP usando axios ou fetch? </label><br>
-        <label><input type="checkbox" name="front_end_vue_7"> Consegue organizar arquivos e pastas em um projeto Vue? </label><br>
-        <label><input type="checkbox" name="front_end_vue_8"> Entende a diferença entre props e data? </label><br>
-        <label><input type="checkbox" name="front_end_vue_9"> Usa componentes reutilizáveis no Vue? </label><br>
-        <label><input type="checkbox" name="front_end_vue_10"> Consegue consumir uma API e exibir dados na tela? </label><br>
-
-        <!-- Front-end (Angular 2+) -->
-        <h3>Front-end (Angular 2+)</h3>
-        <label><input type="checkbox" name="front_end_angular_1"> Consegue criar componentes básicos no Angular? </label><br>
-        <label><input type="checkbox" name="front_end_angular_2"> Sabe estilizar componentes usando CSS ou frameworks? </label><br>
-        <label><input type="checkbox" name="front_end_angular_3"> Consegue usar *ngIf e *ngFor corretamente? </label><br>
-        <label><input type="checkbox" name="front_end_angular_4"> Entende como funcionam os eventos e bindings no Angular? </label><br>
-        <label><input type="checkbox" name="front_end_angular_5"> Usa formulários básicos com ngModel? </label><br>
-        <label><input type="checkbox" name="front_end_angular_6"> Faz requisições HTTP usando HttpClient? </label><br>
-        <label><input type="checkbox" name="front_end_angular_7"> Organiza corretamente os arquivos em um projeto Angular? </label><br>
-        <label><input type="checkbox" name="front_end_angular_8"> Entende a diferença entre services e componentes? </label><br>
-        <label><input type="checkbox" name="front_end_angular_9"> Consegue criar uma rota básica no Angular? </label><br>
-        <label><input type="checkbox" name="front_end_angular_10"> Consegue consumir uma API e exibir dados na tela? </label><br>
-
-        <!-- Controle de Versionamento (GIT) -->
-        <h3>Controle de Versionamento (GIT)</h3>
-        <label><input type="checkbox" name="git_1"> Compreende o fluxo de trabalho Git Flow? </label><br>
-        <label><input type="checkbox" name="git_2"> Sabe resolver conflitos de merge? </label><br>
-        <label><input type="checkbox" name="git_3"> Usa corretamente branches e tags? </label><br>
-        <label><input type="checkbox" name="git_4"> Domina rebase e cherry-pick? </label><br>
-        <label><input type="checkbox" name="git_5"> Sabe configurar e usar hooks do Git? </label><br>
-
-        <!-- Estrutura de Projetos/Configuração de Ambiente -->
-        <h3>Estrutura de Projetos/Configuração de Ambiente</h3>
-        <label><input type="checkbox" name="estrutura_1"> Compreende o fluxo de funcionamento de uma aplicação web? </label><br>
-        <label><input type="checkbox" name="estrutura_2"> Entende os conceitos de regra de negócio e sua implementação? </label><br>
-        <label><input type="checkbox" name="estrutura_3"> Sabe configurar um ambiente local para desenvolvimento? </label><br>
-        <label><input type="checkbox" name="estrutura_4"> Consegue explicar a estrutura de um projeto e a função de cada parte? </label><br>
-        <label><input type="checkbox" name="estrutura_5"> Tem noção sobre como integrar diferentes partes de uma aplicação? </label><br>
-
-      </div>
 
       <!-- Navegação -->
       <div class="form-navigation">
@@ -271,18 +212,9 @@
       nextButton.textContent = stepIndex === steps.length - 1 ? 'Finalizar' : 'Próximo';
     }
   
-    // Função para validar se a etapa 8 deve ser exibida
-    function shouldShowStep8() {
-      // Condição exemplo: se "Sim" foi selecionado em alguma pergunta específica da etapa anterior
-      const respostaEtapa7 = document.querySelector('input[name="habilidade_1"]:checked');
-      return respostaEtapa7 && respostaEtapa7.value === "Sim"; // Modifique conforme a lógica desejada
-    }
-  
     // Lidar com o clique no botão 'Próximo'
     nextButton.addEventListener('click', () => {
-      if (currentStep === 7 && shouldShowStep8()) {
-        currentStep++; // Avançar para a etapa 8 se a condição for atendida
-      } else if (currentStep < steps.length - 1) {
+      if (currentStep < steps.length - 1) {
         currentStep++;
       } else {
         document.getElementById('questionario-form').submit();
