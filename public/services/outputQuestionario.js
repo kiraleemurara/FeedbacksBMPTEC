@@ -155,6 +155,48 @@ function gerarQuestionario(respostas) {
           new Paragraph("   - Existe algo que gostaria de compartilhar sobre sua experiência profissional que não foi abordado nas perguntas anteriores?"),
           new Paragraph("     R: " + respostas.reflexao_3),
           new Paragraph(""),
+
+          // Tópico 8 - Feedback Tech lead
+          new Paragraph({
+            children: [new TextRun({ text: "8. Feedback 360° - Tech lead", bold: true })],
+          }),
+          new Paragraph("   - Do seu ponto de vista, como você descreveria o desempenho geral dessa pessoa? Quais os pontos fortes dessa pessoa? E quais os pontos de atenção?"),
+          new Paragraph("     R: " + respostas.leader_1),
+          new Paragraph(""),
+          new Paragraph("   - Quais habilidades foram aprimoradas desde a última avaliação, ou quais você vê potencial?"),
+          new Paragraph("     R: " + respostas.leader_2),
+          new Paragraph(""),
+          new Paragraph("   - Quais conselho ou dica você daria para ajudar esse colaborador a melhorar seus resultados e seu impacto dentro da equipe?"),
+          new Paragraph("     R: " + respostas.leader_3),
+          new Paragraph(""),
+
+          // Tópico 9 - Feedback Gestão
+          new Paragraph({
+            children: [new TextRun({ text: "8. Feedback 360° - Gestão", bold: true })],
+          }),
+          new Paragraph("   - Quais são os comportamentos desse colaborador que você acha que mais contribuem para a dinâmica da equipe?"),
+          new Paragraph("     R: " + respostas.gestao_1),
+          new Paragraph(""),
+          new Paragraph("   - Quais são as suas expectativas em relação ao desempenho desse colaborador? Elas tem sido atendidas? Algum comportamento que necessita atenção?"),
+          new Paragraph("     R: " + respostas.gestao_2),
+          new Paragraph(""),
+          new Paragraph("   - Alguma das questões levantadas pelo colaborador nas perguntas anteriores que você gostaria de responder, ou explicar??"),
+          new Paragraph("     R: " + respostas.gestao_3),
+          new Paragraph(""),
+
+          // Tópico 10 - Replica  do Colaborador
+          new Paragraph({
+            children: [new TextRun({ text: "8. Feedback 360° - Réplica Colaborador", bold: true })],
+          }),
+          new Paragraph("   - Quais são os comportamentos desse colaborador que você acha que mais contribuem para a dinâmica da equipe?"),
+          new Paragraph("     R: " + respostas.gestao_1),
+          new Paragraph(""),
+          new Paragraph("   - Quais são as suas expectativas em relação ao desempenho desse colaborador? Elas tem sido atendidas? Algum comportamento que necessita atenção?"),
+          new Paragraph("     R: " + respostas.gestao_2),
+          new Paragraph(""),
+          new Paragraph("   - Alguma das questões levantadas pelo colaborador nas perguntas anteriores que você gostaria de responder, ou explicar??"),
+          new Paragraph("     R: " + respostas.gestao_3),
+          new Paragraph(""),
         ],
       },
     ],

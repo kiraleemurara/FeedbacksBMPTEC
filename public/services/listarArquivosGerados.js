@@ -1,3 +1,4 @@
+const { debug } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -22,15 +23,17 @@ function listarArquivosGerados(pastaArquivos) {
           }
 
           files.forEach(file => {
+            
             const filePath = path.join(squadPath, file);
             const stats = fs.statSync(filePath);
-            const dateCreated = stats.birthtime.toISOString(); // Data completa do arquivo
+            const dateCreated = stats.birthtime.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); // Data completa do arquivo
+            
 
             // Adiciona os arquivos à lista sem validar a data de criação
             arquivos.push({
               nome: file,
               squad: squadDir.name, // Nome do squad (pasta)
-              dataHora: dateCreated.slice(0, 19).replace('T', ' '), // Data e hora formatada
+              dataHora: dateCreated, // Data e hora formatada
               downloadUrl: `/arquivos/${squadDir.name}/${file}` // Caminho para o arquivo para download
             });
           });
