@@ -172,7 +172,7 @@ function gerarQuestionario(respostas) {
 
           // Tópico 9 - Feedback Gestão
           new Paragraph({
-            children: [new TextRun({ text: "8. Feedback 360° - Gestão", bold: true })],
+            children: [new TextRun({ text: "9. Feedback 360° - Gestão", bold: true })],
           }),
           new Paragraph("   - Quais são os comportamentos desse colaborador que você acha que mais contribuem para a dinâmica da equipe?"),
           new Paragraph("     R: " + respostas.gestao_1),
@@ -186,16 +186,16 @@ function gerarQuestionario(respostas) {
 
           // Tópico 10 - Replica  do Colaborador
           new Paragraph({
-            children: [new TextRun({ text: "8. Feedback 360° - Réplica Colaborador", bold: true })],
+            children: [new TextRun({ text: "10. Feedback 360° - Réplica Colaborador", bold: true })],
           }),
-          new Paragraph("   - Quais são os comportamentos desse colaborador que você acha que mais contribuem para a dinâmica da equipe?"),
-          new Paragraph("     R: " + respostas.gestao_1),
+          new Paragraph("   -  O que foi apresentado pelos responsáveis pela sua liderança e gestão, faz sentido? Alguma dúvida ou esclarecimento necessário?"),
+          new Paragraph("     R: " + respostas.colaborador_1),
           new Paragraph(""),
-          new Paragraph("   - Quais são as suas expectativas em relação ao desempenho desse colaborador? Elas tem sido atendidas? Algum comportamento que necessita atenção?"),
-          new Paragraph("     R: " + respostas.gestao_2),
+          new Paragraph("   - Descreva sua liderança. Ela tem sido colaborativa com sua carreira? Tem recebido o suporte necessário? Ela consegue atender suas expectativas? Alguma sugestão?"),
+          new Paragraph("     R: " + respostas.colaborador_2),
           new Paragraph(""),
-          new Paragraph("   - Alguma das questões levantadas pelo colaborador nas perguntas anteriores que você gostaria de responder, ou explicar??"),
-          new Paragraph("     R: " + respostas.gestao_3),
+          new Paragraph("   - Descreva sua Gestão. Ela tem sido assertiva? Você tem se sentido ouvido e respeitado? Alguma sugestão?"),
+          new Paragraph("     R: " + respostas.colaborador_3),
           new Paragraph(""),
         ],
       },
@@ -203,7 +203,7 @@ function gerarQuestionario(respostas) {
   });
 
   // Gerando o nome do arquivo no formato: NomeDoParticipante yyyy-mm-dd.docx
-  const fileName = `${nomeParticipante} - ${dataFeedback} - (Auto Avaliacao).docx`;
+  const fileName = `${nomeParticipante} - ${dataFeedback} - (Feedback 360).docx`;
   const filePath = path.join(squadDir, fileName); // Salvar o arquivo dentro da pasta da squad
 
   // Retornando o buffer gerado pelo Packer
