@@ -35,7 +35,7 @@ function gerarQuestionario(respostas) {
             alignment:'center',
             children: [
               new TextRun({
-                text: "Relatório de Auto-Avaliação: " + nomeParticipante,
+                text: "Relatório de Feedback 360: " + nomeParticipante,
                 bold: true,
                 size: 42,
               }),
@@ -47,7 +47,7 @@ function gerarQuestionario(respostas) {
             size: 36,
             children: [
               new TextRun({
-                text: " | Cargo: " + cargo + " | " + "Squad: " + squad + " | Inicio: " + dataContratacao + " | ",
+                text: "| Cargo: " + cargo + " | " + "Squad: " + squad + " | Inicio: " + dataContratacao + " |",
                 bold: true,
               }),
               new TextRun({
